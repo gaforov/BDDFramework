@@ -4,6 +4,9 @@ import base.BaseClass;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ConfigsUtility;
+
+import static utils.CommonMethods.*;
 
 public class AddEmployeePageElements {
     @FindBy(id = "firstName")
@@ -35,5 +38,12 @@ public class AddEmployeePageElements {
 
     public AddEmployeePageElements() {
         PageFactory.initElements(BaseClass.driver, this);
+    }
+
+    public void createNewEmployeeCredentials() {
+        sendText(username, ConfigsUtility.getProperty("empUsername"));
+        sendText(password, ConfigsUtility.getProperty("empPassword"));
+        sendText(confirmPassword, ConfigsUtility.getProperty("empPassword"));
+        click_waitForClickability(saveButton);
     }
 }

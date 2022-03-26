@@ -6,35 +6,26 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import utils.ConfigsReader;
-
 import java.util.List;
+import static utils.CommonMethods.*;
 
 import static base.BaseClass.driver;
-import static base.BaseClass.setUp;
-import static base.PageInitializer.*;
+import static base.PageInitializer.empListPage;
+import static base.PageInitializer.pimPage;
 import static utils.CommonMethods.click_waitForClickability;
 
 public class EmployeeSearchSteps {
     String empId = "27335A";
-
-    @Given("user is navigated to HRM homepage")
-    public void user_is_navigated_to_hrm_homepage() {
-        setUp();
-    }
-
-    @Given("user is logged with valid admin credentials")
-    public void user_is_logged_with_valid_admin_credentials() {
-        loginPage.loginAndClick(ConfigsReader.getProperty("username"), ConfigsReader.getProperty("password"));
-    }
+    String empFirstname = "Ellen";
+    String empLastname = "Ali";
 
     @Given("user navigates to employee list page")
     public void user_navigates_to_employee_list_page() {
         pimPage.navigateToEmployeeList();
     }
 
-    @Given("user enters employee's valid id")
-    public void user_enters_employee_s_valid_id() {
+    @Given("user enters existing employee's id")
+    public void user_enters_existing_employee_s_id() {
         empListPage.searchEmployeeById(empId);
     }
 
@@ -58,7 +49,8 @@ public class EmployeeSearchSteps {
         driver.close();
     }
 
-    @Given("user enters employee's valid firstname and lastname")
-    public void user_enters_employee_s_valid_firstname_and_lastname() {
+    @Given("user enters existing employee's firstname and lastname")
+    public void user_enters_existing_employee_s_firstname_and_lastname() {
+        sendText(empListPage.employeeSearchByName, empFirstname + " " + empLastname);
     }
 }

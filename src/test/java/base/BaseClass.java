@@ -4,7 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import utils.ConfigsReader;
+import utils.ConfigsUtility;
 import utils.Constants;
 
 import java.time.Duration;
@@ -15,9 +15,9 @@ public class BaseClass {
     public static WebDriver driver;
 
     public static WebDriver setUp() {
-        ConfigsReader.readProperties(Constants.CONFIGURATION_FILEPATH);
+        ConfigsUtility.readProperties(Constants.CONFIGURATION_FILEPATH);
 
-        switch (ConfigsReader.getProperty("browser").toLowerCase()) {
+        switch (ConfigsUtility.getProperty("browser").toLowerCase()) {
             case "chrome" -> {
 //                System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH); // <-- replace with WebDriverManager
                 WebDriverManager.chromedriver().setup();
@@ -32,7 +32,7 @@ public class BaseClass {
 
 //        driver.manage().window().maximize();
         driver.manage().window().fullscreen();
-        driver.get(ConfigsReader.getProperty("url"));
+        driver.get(ConfigsUtility.getProperty("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT_TIME));  // wait time can be changes in Constants class
 
         initialize(); // <-- initialize all page objects as part of setup to reuse their methods without creating their objects again everytime.
