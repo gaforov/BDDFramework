@@ -15,6 +15,9 @@ public class AddEmployeePageElements {
     @FindBy(id = "lastName")
     public WebElement lastName;
 
+    @FindBy(id = "middleName")
+    public WebElement middleName;
+
     @FindBy(id = "employeeId")
     public WebElement employeeId;
 

@@ -16,21 +16,21 @@ public class AddEmployeeSteps {
     public void user_navigates_to_add_employee_page() {
         pimPage.navigateToAddEmployee();
     }
-    @Given("user enters new employee's firstname and lastname")
-    public void user_enters_new_employee_s_firstname_and_lastname() {
-        sendText(addEmployeePage.firstName, ConfigsUtility.getProperty("empFirstname"));
-        sendText(addEmployeePage.lastName, ConfigsUtility.getProperty("empLastname"));
+    @Given("user enters new employee's {string} and {string}")
+    public void user_enters_new_employee_s_firstname_and_lastname(String firstName, String lastName) {
+        sendText(addEmployeePage.firstName, firstName);
+        sendText(addEmployeePage.lastName, lastName);
     }
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
         click_waitForClickability(addEmployeePage.saveButton);
     }
-    @Then("employee is added successfully")
-    public void employee_is_added_successfully() {
-        String expected = ConfigsUtility.getProperty("empFirstname") + " " + ConfigsUtility.getProperty("empLastname");
-        String actual = personalDetailsPage.empFullName.getText();
-        Assert.assertEquals("Employee name doesn't match", expected, actual);
+    @Then("{string} is added successfully")
+    public void employee_is_added_successfully(String expectedName) {
+        String actualName = personalDetailsPage.empFullName.getText();
+        Assert.assertEquals("Employee name doesn't match", expectedName, actualName);
         takeScreenshot(personalDetailsPage.empDetailsPageSection, "NewEmployeeAdded");
+        System.out.println(expectedName + " was added successfully");
     }
 
     @And("user deletes employee id")
@@ -46,5 +46,12 @@ public class AddEmployeeSteps {
     @And("user enters new employee's login credentials")
     public void userEntersNewEmployeeSLoginCredentials() {
         addEmployeePage.createNewEmployeeCredentials();
+    }
+
+    @And("user enters new employee's {string}, {string}, and {string}")
+    public void userEntersNewEmployeeSAnd(String firstName, String middleName, String lastName) {
+        sendText(addEmployeePage.firstName, firstName);
+        sendText(addEmployeePage.middleName, middleName);
+        sendText(addEmployeePage.lastName, lastName);
     }
 }
