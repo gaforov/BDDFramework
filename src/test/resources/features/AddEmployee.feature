@@ -33,3 +33,10 @@ Feature: Add new employee
       | Mary      | Ann      | Mary Ann               |
       | Michael   | Williams | Michael Williams       |
 
+  @datatable
+  Scenario: Adding multiple employees using datatable
+    When user enters new employee's details, clicks on save button and verify that employee added successfully
+      | FirstName | MiddleName | LastName |
+      | John      | W.         | Smith    |
+      | Mary      | A.         | Ann      |
+      | Michael   | L.         | Williams |

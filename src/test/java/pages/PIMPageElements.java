@@ -12,10 +12,10 @@ public class PIMPageElements {
     public WebElement pimMenu;
 
     @FindBy(id = "menu_pim_addEmployee")
-    public WebElement addEmployee;
+    public WebElement addEmployeeSubMenu;
 
     @FindBy(id = "menu_pim_viewEmployeeList")
-    public WebElement employeeList;
+    public WebElement employeeListSubMenu;
 
 
     public PIMPageElements() {
@@ -25,11 +25,11 @@ public class PIMPageElements {
     public void navigateToAddEmployee() {
         click_waitForClickability(pimMenu);
         //jsClick(PIM); // if regular(HTML) click doesn't work, use JS click.
-        click_waitForClickability(addEmployee);
+        click_waitForClickability(addEmployeeSubMenu);
     }
 
     public void navigateToEmployeeList() {
         click_waitForClickability(pimMenu);
-        click_waitForClickability(employeeList);
+        click_waitForClickability(employeeListSubMenu);
     }
 }

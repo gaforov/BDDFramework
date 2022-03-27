@@ -1,11 +1,15 @@
 package steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import utils.ConfigsUtility;
+
+import java.util.List;
+import java.util.Map;
 
 import static utils.CommonMethods.*;
 import static base.PageInitializer.*;
@@ -54,4 +58,37 @@ public class AddEmployeeSteps {
         sendText(addEmployeePage.middleName, middleName);
         sendText(addEmployeePage.lastName, lastName);
     }
+
+    @When("user enters new employee's details, clicks on save button and verify that employee added successfully")
+    public void user_enters_new_employee_s_details_clicks_on_save_button_and_verify_that_employee_added_successfully(DataTable dataTable) {
+        List<Map<String, String>> addEmployeeMapList = dataTable.asMaps();
+
+        for (Map<String, String> map : addEmployeeMapList) {
+            sendText(addEmployeePage.firstName, map.get("FirstName"));
+            sendText(addEmployeePage.middleName, map.get("MiddleName"));
+            sendText(addEmployeePage.lastName, map.get("LastName"));
+
+//            System.out.println("map.get(\"FirstName\") = " + map.get("FirstName")); // get value by passing key
+//            System.out.println("map.values() = "+ map.values());                    // get values only
+//            System.out.println("map.keySet() = " + map.keySet());                   // get keys only
+//            System.out.println("map.entrySet() = " + map.entrySet());               // get pairs of both key and value
+//            System.out.println("------------------------------------------------");
+            click_waitForClickability(addEmployeePage.saveButton);
+
+            // Assertion starts here + take screenshot before clicking to next page
+            String expectedFullName = map.get("FirstName") + " " + map.get("MiddleName") + " " + map.get("LastName");
+            String actualFullName = personalDetailsPage.empFullName.getText();
+            Assert.assertEquals("Added employee name doesn't match", expectedFullName, actualFullName);
+            System.out.println(expectedFullName + " is added successfully");
+            takeScreenshot(personalDetailsPage.empDetailsPageSection, "PASS/" + actualFullName);
+
+            // get back to AddEmployeePge to add next employee
+            pimPage.addEmployeeSubMenu.click();
+
+
+        }
+    }
+
+
+
 }
