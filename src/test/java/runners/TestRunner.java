@@ -11,8 +11,13 @@ import org.junit.runner.RunWith;
         , dryRun = false
         , monochrome = true
         , publish = true
-        , tags = "@dash"
+        , tags = "@smoke"
+        , plugin = {
+        "pretty"
+        , "html:target/cucumber-reports/cucumberReports.html"
+}
 )
+
 public class TestRunner {
 
 }

@@ -13,9 +13,6 @@ Feature: Login
     When user clicks on login button
     Then ess user is successfully logged in
 
-    """
-    This is a cucumber doc
-    """
   @smoke @regression
   Scenario: login with valid username and invalid password
     And user enters valid username and invalid password
