@@ -27,6 +27,9 @@ public class PersonalDetailsPageElements {
     @FindBy(id = "employee-details")
     public WebElement empDetailsPageSection;
 
+    @FindBy(id = "btnSave")
+    public WebElement editButton;
+
     public PersonalDetailsPageElements() {
         PageFactory.initElements(BaseClass.driver, this);
     }

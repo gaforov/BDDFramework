@@ -1,27 +1,32 @@
 package utils;
 
+import com.google.common.collect.Maps;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ExcelUtility {
     private static FileInputStream fileInputStream;
     private static Workbook workbook;
     private static Sheet sheet;
 
-    public static void main(String[] args) {
-        String projectPath = System.getProperty("user.dir");  // The last forward-slash '/' at the very end is not included in the path. If you append anything start with /filename/etc.
-        System.out.println(projectPath);
-        String filePath = projectPath + "/data/HrmTestData.xlsx";
-        System.out.println(filePath);
-        String absoluteFilePath = System.getProperty("user.dir") + "/data/HrmTestData.xlsx";
-        System.out.println(absoluteFilePath);
-        System.out.println(Arrays.deepToString(excelToArray(System.getProperty("user.dir") + "/data/HrmTestData.xlsx", "Employee")));
-    }
+//    public static void main(String[] args) {
+//        String projectPath = System.getProperty("user.dir");  // The last forward-slash '/' at the very end is not included in the path. If you append anything start with /filename/etc.
+//        System.out.println(projectPath);
+//        String filePath = projectPath + "/data/HrmTestData.xlsx";
+//        System.out.println(filePath);
+//        String absoluteFilePath = System.getProperty("user.dir") + "/data/HrmTestData.xlsx";
+//        System.out.println(absoluteFilePath);
+//        System.out.println(Arrays.deepToString(excelToArray(System.getProperty("user.dir") + "/data/HrmTestData.xlsx", "Employee")));
+//    }
 
     private static void openExcel(String filePath) {
         try {
@@ -77,6 +82,70 @@ public class ExcelUtility {
 
     }
 
-    // Map version: Retrieve data using Map, instead of inner loop.
+
+
+
+    //Above code slightly differently, without loadSheet() method. Method with single-parameter --> sheetName as parameter only.
+    private static String filePath = Constants.TESTDATA_FILEPATH;
+
+    static void openExcel2(String sheetName) {
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            workbook = new XSSFWorkbook(fis);
+            sheet = workbook.getSheet(sheetName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static int numberOfRows() {
+        return sheet.getPhysicalNumberOfRows();
+    }
+
+    static int numberOfColumns() {
+        return sheet.getRow(0).getLastCellNum();
+    }
+
+    static String getCellData(int rowIndex, int cellIndex) {
+        return sheet.getRow(rowIndex).getCell(cellIndex).toString();
+    }
+
+    /**
+     * Overloaded method with single parameter - only spreadsheet name required. File destination is managed
+     * from Constants Class, "Constants.TESTDATA_FILEPATH".
+     * @param sheetName provide sheet name you are about to pull data from
+     * @return loops through and returns cell data from given spreadsheet, excluding header data.
+     */
+    public static Object[][] excelToArray(String sheetName) {
+        openExcel2(sheetName);
+        Object[][] data = new Object[numberOfRows()-1][numberOfColumns()]; // we do not include row-header in total count, thus we deduct one row by inserting -1
+        for (int i = 1; i < numberOfRows(); i++) {
+            for (int j = 0; j < numberOfColumns(); j++) {
+                data[i-1][j] = getCellData(i, j);
+            }
+        }
+        return data;
+    }
+
+    // Note: Map version: Retrieve data using Map, instead of inner loop.
+    public static List<Map<String, String>> excelIntoListOfMaps(String filePath, String sheetName) {
+        openExcel(filePath);
+        loadSheet(sheetName);
+
+        List<Map<String,String>> mapsList = new ArrayList<>();
+        Map<String, String> excelMap; // LHM preserves insertion order
+
+
+        for (int i = 1; i < rowCount(); i++) {
+            excelMap = new LinkedHashMap<>();
+            for (int j = 0; j < colsCount(); j++) {
+                excelMap.put(cellData(0,j),cellData(i,j));
+            }
+            mapsList.add(excelMap);
+        }
+        return mapsList;
+    }
 
 }

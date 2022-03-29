@@ -40,3 +40,6 @@ Feature: Add new employee
       | John      | W.         | Smith    |
       | Mary      | A.         | Ann      |
       | Michael   | L.         | Williams |
+
+    Scenario: Adding multiple employees from excel spreadsheet
+      When user enters employee data from "Employee" sheet, then employee is added

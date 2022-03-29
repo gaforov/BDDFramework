@@ -51,6 +51,6 @@ public class EmployeeSearchSteps {
 
     @Given("user enters existing employee's firstname and lastname")
     public void user_enters_existing_employee_s_firstname_and_lastname() {
-        sendText(empListPage.employeeSearchByName, empFirstname + " " + empLastname);
+        sendText(empListPage.employeeSearchFieldByName, empFirstname + " " + empLastname);
     }
 }

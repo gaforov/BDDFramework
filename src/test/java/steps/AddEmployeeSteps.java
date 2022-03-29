@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import utils.ConfigsUtility;
+import utils.Constants;
+import utils.ExcelUtility;
 
 import java.util.List;
 import java.util.Map;
@@ -79,6 +81,7 @@ public class AddEmployeeSteps {
             String expectedFullName = map.get("FirstName") + " " + map.get("MiddleName") + " " + map.get("LastName");
             String actualFullName = personalDetailsPage.empFullName.getText();
             Assert.assertEquals("Added employee name doesn't match", expectedFullName, actualFullName);
+
             System.out.println(expectedFullName + " is added successfully");
             takeScreenshot(personalDetailsPage.empDetailsPageSection, "PASS/" + actualFullName);
 
@@ -90,5 +93,20 @@ public class AddEmployeeSteps {
     }
 
 
+    @When("user enters employee data from {string} sheet, then employee is added")
+    public void userEntersEmployeeDataFromSheetThenEmployeeIsAdded(String sheetName) {
+        List<Map<String, String>> mapList = ExcelUtility.excelIntoListOfMaps(Constants.TESTDATA_FILEPATH, "Employee");
+        for (Map<String, String> map : mapList) {
+                sendText(addEmployeePage.firstName, map.get("Firstname"));
+                sendText(addEmployeePage.lastName, map.get("Lastname"));
 
+                click_waitForClickability(addEmployeePage.saveButton);
+
+                String expectedEmpName = map.get("Firstname") + " " + map.get("Lastname");
+                Assert.assertEquals("Employee name doesn't match", expectedEmpName, personalDetailsPage.empFullName.getText());
+
+                System.out.println(personalDetailsPage.empFullName.getText() + " was added successfully");
+                click_waitForClickability(pimPage.addEmployeeSubMenu);
+        }
+    }
 }
