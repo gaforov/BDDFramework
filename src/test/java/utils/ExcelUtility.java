@@ -135,11 +135,11 @@ public class ExcelUtility {
         loadSheet(sheetName);
 
         List<Map<String,String>> mapsList = new ArrayList<>();
-        Map<String, String> excelMap; // LHM preserves insertion order
+        Map<String, String> excelMap;
 
 
         for (int i = 1; i < rowCount(); i++) {
-            excelMap = new LinkedHashMap<>();
+            excelMap = new LinkedHashMap<>(); // LHM preserves insertion order
             for (int j = 0; j < colsCount(); j++) {
                 excelMap.put(cellData(0,j),cellData(i,j));
             }

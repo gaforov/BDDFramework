@@ -49,8 +49,7 @@ public class LoginSteps {
     @Then("ess user is successfully logged in")
     public void ess_user_is_successfully_logged_in() {
         String expectedMsg = "Welcome Mike";
-        String actualMsg = dashboardPage.welcome.getText();
-        Assert.assertEquals("Welcome message is not correct", expectedMsg, actualMsg);
+        Assert.assertEquals("Welcome message is not correct", expectedMsg, dashboardPage.welcome.getText());
     }
 
     // Scenario: login with valid username and invalid password
@@ -65,7 +64,29 @@ public class LoginSteps {
     @Then("user see invalid credentials text on login page")
     public void user_see_invalid_credentials_text_on_login_page() {
         String expectedErrorMsg = "Invalid credentials";
-        String actualErrorMsg = loginPage.errorMessage.getText();
-        Assert.assertEquals("Error message is not correct", expectedErrorMsg, actualErrorMsg);
+        Assert.assertEquals("Error message is not correct", expectedErrorMsg, loginPage.errorMessage.getText());
     }
+
+    @When("user enters valid {string} and {string}")
+    public void userEntersValidAnd(String username, String password) {
+        sendText(loginPage.username, username);
+        sendText(loginPage.password, password);
+    }
+
+    @Then("{string} is successfully logged in")
+    public void isSuccessfullyLoggedIn(String firstname) {
+        Assert.assertTrue("User name doesn't match", dashboardPage.welcome.getText().contains(firstname));
+    }
+
+    @When("user enters invalid {string} andOr {string}")
+    public void userEntersInvalidAndOr(String username, String password) {
+        sendText(loginPage.username, username);
+        sendText(loginPage.password, password);
+    }
+
+    @Then("user should see correct {string} displayed")
+    public void userShouldSeeCorrectDisplayed(String errorMessage) {
+        Assert.assertEquals("Error message is not correct", errorMessage, loginPage.errorMessage.getText());
+    }
+
 }

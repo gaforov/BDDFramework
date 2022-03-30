@@ -11,13 +11,13 @@ import org.junit.runner.RunWith;
         , dryRun = false
         , monochrome = true
         , publish = true
-        , tags = "@smoke"
+        , tags = "@regression"
         , plugin = {
         "pretty"
         , "html:target/cucumber-reports/cucumberReports.html"
 }
 )
 
-public class TestRunner {
+public class RegressionRunner {
 
 }

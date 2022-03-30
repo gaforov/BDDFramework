@@ -4,7 +4,6 @@ Feature: Add new employee
     Given user is logged with valid admin credentials
     And user navigates to AddEmployeePage
 
-
   Scenario: Add employee with first name and lastname
     And user enters new employee's "John" and "Smith"
     When user clicks on save button
@@ -41,6 +40,6 @@ Feature: Add new employee
       | Mary      | A.         | Ann      |
       | Michael   | L.         | Williams |
 
-    @excel
-    Scenario: Adding multiple employees from excel spreadsheet
-      When user enters employee data from "Employee" sheet, then employee is added
+  @excel
+  Scenario: Adding multiple employees from excel spreadsheet
+    When user enters employee data from "Employee" sheet, then employee is added

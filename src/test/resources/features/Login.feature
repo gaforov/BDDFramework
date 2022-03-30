@@ -13,6 +13,17 @@ Feature: Login
     When user clicks on login button
     Then ess user is successfully logged in
 
+    # Combine two above Scenarios into one Scenario Outline:
+
+  Scenario Outline: positive user login
+    When user enters valid "<UserName>" and "<Password>"
+    And user clicks on login button
+    Then "<FirstName>" is successfully logged in
+    Examples:
+      | UserName | Password    | FirstName |
+      | Admin    | Hum@nhrm123 | Admin     |
+      | Syntax   | Syntax123!  | Mike      |
+
   @smoke @regression
   Scenario: login with valid username and invalid password
     And user enters valid username and invalid password

@@ -1,5 +1,6 @@
 Feature: Add employees using Scenario Outline
 
+  @regression
   Scenario Outline: Adding multiple employees
     Given user is logged with valid admin credentials
     And user navigates to AddEmployeePage

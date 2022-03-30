@@ -1,15 +1,13 @@
 package runners;
 
-import junit.runner.TestRunListener;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 import java.util.Date;
 import static utils.CommonMethods.*;
-import static base.PageInitializer.*;
 
-public class MyRunListener extends RunListener {
+public class Listener extends RunListener {
 
     @Override
     public void testRunStarted(Description description) throws Exception {
