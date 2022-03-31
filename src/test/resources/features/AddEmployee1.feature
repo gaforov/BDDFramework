@@ -1,6 +1,6 @@
 Feature: Add employees using Scenario Outline
 
-  @regression
+  @regression @testingNow
   Scenario Outline: Adding multiple employees
     Given user is logged with valid admin credentials
     And user navigates to AddEmployeePage
@@ -10,5 +10,5 @@ Feature: Add employees using Scenario Outline
     Examples:
       | FirstName | MiddleName | LastName | FirstName, MiddleName and LastName |
       | John      | A.         | Smith    | John A. Smith                      |
-      | Mary      | J.         | Ann      | Mary J. Ann                        |
-      | Michael   | R.         | Williams | Michael R. Williams                |
+#      | Mary      | J.         | Ann      | Mary J. Ann                        |
+#      | Michael   | R.         | Williams | Michael R. Williams                |

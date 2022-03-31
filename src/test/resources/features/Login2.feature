@@ -1,7 +1,7 @@
 @sprint5 @login
 Feature: Login positive and negative
 
-  @smoke
+  @smoke @testingNow
   Scenario Outline: happy path user login
     When user enters valid "<UserName>" and "<Password>"
     And user clicks on login button
@@ -10,7 +10,7 @@ Feature: Login positive and negative
     Examples:
       | UserName | Password    | FirstName |
       | Admin    | Hum@nhrm123 | Admin     |
-      | Syntax   | Syntax123!  | Mike      |
+#      | Syntax   | Syntax123!  | Mike      |
 
   @regression
   Scenario Outline: negative logins and error messages validation

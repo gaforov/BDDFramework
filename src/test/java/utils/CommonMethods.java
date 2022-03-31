@@ -357,6 +357,22 @@ public class CommonMethods {
         return destinationFile;
     }
 
+    public static byte[] takeScreenshotAsBytes (String destinationFileName) {
+        TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
+        byte[] screenshotAsBytes = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+
+        File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        String destinationFile = Constants.SCREENSHOT_FILEPATH + destinationFileName + "_" + timeStamp() + ".jpeg";
+        try {
+            FileUtils.copyFile(sourceFile, new File(destinationFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return screenshotAsBytes;
+    }
+
+
+
     static public String timeStamp() {
         return new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss_SSS").format(new Date());
     }

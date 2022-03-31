@@ -4,10 +4,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
+import static base.BaseClass.driver;
 import static base.PageInitializer.*;
-import static utils.CommonMethods.click_waitForClickability;
+import static utils.CommonMethods.*;
 
 public class EmployeeSearchSteps {
 
@@ -18,7 +22,8 @@ public class EmployeeSearchSteps {
 
     @Given("user enters existing employee's id {string}")
     public void user_enters_existing_employee_s_id(String empId) {
-        empListPage.searchEmployeeById(empId);
+        sendText(empListPage.employeeSearchFieldById, empId);
+        ;
     }
 
     @When("user clicks on search button")
@@ -33,6 +38,16 @@ public class EmployeeSearchSteps {
             searchResultIdText = empSearchResultId.getText();
             while (searchResultIdText != null && !searchResultIdText.equals(empId)) {
                 click_waitForClickability(empListPage.nextArrowButton);
+
+//                List<WebElement> paginationNumbers = driver.findElements(By.xpath("//div[@class='bottom']/ul/li"));
+//                for (int i = 0; i < paginationNumbers.size(); i++) {
+//                    System.out.println(paginationNumbers.get(i).getText());
+//                    while (!paginationNumbers.get(i + 1).getText().equals(empListPage.lastArrowButton.getText())) {
+//                        click_waitForClickability(empListPage.nextArrowButton);
+//                    }
+//                }
+
+
             }
             click_waitForClickability(empSearchResultId);
             break;
@@ -44,7 +59,6 @@ public class EmployeeSearchSteps {
 
     @Given("user enters existing employee's {string} and {string}")
     public void user_enters_existing_employee_s_firstname_and_lastname(String empFirstName, String empLastName) {
-        //sendText(empListPage.employeeSearchFieldByName, empFirstName + " " + empLastName);
-        empListPage.searchEmployeeByName(empFirstName + " " + empLastName);
+        sendText(empListPage.employeeSearchFieldByName, empFirstName + " " + empLastName);
     }
 }

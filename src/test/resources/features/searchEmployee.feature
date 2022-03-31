@@ -11,6 +11,6 @@ Feature: Search existing employee
     Then user see employee with Id "27335A" is displayed
 
   Scenario: Search Employee by name
-    And user enters existing employee's "Ellen" and "Ali"
+    And user enters existing employee's "moazzam" and "sadiq"
     When user clicks on search button
     Then user see employee with Id "27335A" is displayed

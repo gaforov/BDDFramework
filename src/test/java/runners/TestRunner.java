@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         , dryRun = false
         , monochrome = true
         , publish = true
-        , tags = "@smoke"
+        , tags = "@testingNow"
         , plugin = {
         "pretty"
         , "html:target/cucumber-reports/cucumberReports.html"
@@ -21,6 +21,6 @@ import org.junit.runner.RunWith;
 }
 )
 
-public class SmokeRunner {
+public class TestRunner {
 
 }

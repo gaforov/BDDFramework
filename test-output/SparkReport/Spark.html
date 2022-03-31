@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Mar 30, 2022 10:24:27 AM</span></a>
+<a href="#"><span class="badge badge-primary">Mar 30, 2022 08:39:57 PM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -72,6 +77,7 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -79,31 +85,31 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@regression</a><a class="dropdown-item" href="#">@smoke</a><a class="dropdown-item" href="#">@sprint5</a><a class="dropdown-item" href="#">@login</a>
+<a class="dropdown-item" href="#">@regression</a><a class="dropdown-item" href="#">@testingNow</a><a class="dropdown-item" href="#">@sprint5</a><a class="dropdown-item" href="#">@login</a><a class="dropdown-item" href="#">@smoke</a>
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">Login</p>
+            <p class="name">Add employees using Scenario Outline</p>
             <p class="text-sm">
-              <span>10:24:27 AM</span> / <span>00:00:14:388</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>8:39:58 PM</span> / <span>00:00:10:039</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">Login</h5>
-<span class='badge badge-success'>03.30.2022 10:24:27 AM</span>
-<span class='badge badge-danger'>03.30.2022 10:24:41 AM</span>
-<span class='badge badge-default'>00:00:14:388</span>
+<h5 class="test-status text-fail">Add employees using Scenario Outline</h5>
+<span class='badge badge-success'>03.30.2022 8:39:58 PM</span>
+<span class='badge badge-danger'>03.30.2022 8:40:08 PM</span>
+<span class='badge badge-default'>00:00:10:039</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -115,92 +121,80 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>valid admin login</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
       </div>
     </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="steps.LoginSteps.user_enters_valid_admin_username_and_password()">
-                <span>And user enters valid admin username and password</span>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="3"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given user is logged with valid admin credentials</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="steps.LoginSteps.user_clicks_on_login_button()">
-                <span>When user clicks on login button</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user navigates to AddEmployeePage</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="steps.LoginSteps.admin_user_is_successfully_logged_in()">
-                <span>Then admin user is successfully logged in</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user enters new employee's "John", "A.", and "Smith"</span>
       <div>
       </div>
-              </div>
-          </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="8"><span class="badge log pass-bg mr-2">Pass</span>valid ess login</div>
-      </div>
-    </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="steps.LoginSteps.user_enters_valid_ess_username_and_password()">
-                <span>And user enters valid ess username and password</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And user clicks on save button</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="steps.LoginSteps.user_clicks_on_login_button()">
-                <span>When user clicks on login button</span>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>Then "John A. Smith" is added successfully</span>
+      <div>
+        <textarea disabled class="code-block">org.junit.ComparisonFailure: Employee name doesn't match expected:<J[ohn A. Smith]> but was:<J[abbar JlooJloo TlooTloo]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at steps.AddEmployeeSteps.employee_is_added_successfully(AddEmployeeSteps.java:37)
+	at ✽."John A. Smith" is added successfully(file:///Users/shahnoza/IdeaProjects/BDDFramework/src/test/resources/features/AddEmployee1.feature:9)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>Adding multiple employees
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
+                  </div>
               </div>
-              <div class="step pass-bg" title="steps.LoginSteps.ess_user_is_successfully_logged_in()">
-                <span>Then ess user is successfully logged in</span>
-      <div>
-      </div>
-              </div>
-          </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="14"><span class="badge log pass-bg mr-2">Pass</span>login with valid username and invalid password</div>
-      </div>
-    </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="steps.LoginSteps.user_enters_valid_username_and_invalid_password()">
-                <span>And user enters valid username and invalid password</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.LoginSteps.user_clicks_on_login_button()">
-                <span>When user clicks on login button</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="steps.LoginSteps.user_see_invalid_credentials_text_on_login_page()">
-                <span>Then user see invalid credentials text on login page</span>
-      <div>
-      </div>
-              </div>
-          </div>
+            </div>
         </div>
   </div>
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="20"
+        <li class="test-item"  status="pass" test-id="11"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">Login positive and negative</p>
             <p class="text-sm">
-              <span>10:24:41 AM</span> / <span>00:00:09:146</span>
+              <span>8:40:08 PM</span> / <span>00:00:05:397</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -209,10 +203,10 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">Login positive and negative</h5>
-<span class='badge badge-success'>03.30.2022 10:24:41 AM</span>
-<span class='badge badge-danger'>03.30.2022 10:24:50 AM</span>
-<span class='badge badge-default'>00:00:09:146</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=20</span>
+<span class='badge badge-success'>03.30.2022 8:40:08 PM</span>
+<span class='badge badge-danger'>03.30.2022 8:40:13 PM</span>
+<span class='badge badge-default'>00:00:05:397</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
@@ -223,14 +217,20 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="21"><span class="badge log pass-bg mr-2">Pass</span>happy path user login</div>
+        <div class="node" id="12"><span class="badge log pass-bg mr-2">Pass</span>happy path user login</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="22"><span class="badge log pass-bg mr-2">Pass</span>happy path user login</div>
+                  <div class="node" id="13"><span class="badge log pass-bg mr-2">Pass</span>happy path user login</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
@@ -249,27 +249,14 @@
       <div>
       </div>
                   </div>
-              </div>
-            </div>
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="28"><span class="badge log pass-bg mr-2">Pass</span>happy path user login</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
                   <div class="step pass-bg">
-                    <span>When user enters valid "Syntax" and "Syntax123!"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And user clicks on login button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then "Mike" is successfully logged in</span>
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>happy path user login
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded2.png' src="test-output/embedded2.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
                   </div>
@@ -289,26 +276,26 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view exception-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">4</span></a></li></ul>
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>1</span>
+<span class='badge log badge-danger'>1</span>
 </span>
-<p class="name">@regression</p>
+<p class="name">org.junit.ComparisonFailure</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@regression</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
+<h4>org.junit.ComparisonFailure</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -319,13 +306,13 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:37 AM</td>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>20:40:06 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='14'>login with valid username and invalid password</a>
+<a href="#" class="linked" test-id='1' id='9'>Then "John A. Smith" is added successfully</a>
 <div class="">
-<span class="badge badge-default">Login.login with valid username and invalid password</span>
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees.Then "John A. Smith" is added successfully</span>
 </div>
 </td>
 </tr>
@@ -333,18 +320,34 @@
 </table>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">5</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>6</span>
+<span class='badge log badge-danger'>2</span>
 </span>
-<p class="name">@smoke</p>
-<p class="duration text-sm">6 tests</p>
+<p class="name">@regression</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@smoke</h4>
-<span status="pass" class='badge log pass-bg'>6 passed</span>
+<h4>@regression</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -355,41 +358,79 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:27 AM</td>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>20:39:58 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>valid admin login</a>
+<a href="#" class="linked" test-id='1' id='2'>Adding multiple employees</a>
 <div class="">
-<span class="badge badge-default">Login.valid admin login</span>
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>20:39:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@testingNow</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testingNow</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>20:39:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>20:39:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
 </div>
 </td>
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:33 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='8'>valid ess login</a>
-<div class="">
-<span class="badge badge-default">Login.valid ess login</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:37 AM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='14'>login with valid username and invalid password</a>
-<div class="">
-<span class="badge badge-default">Login.login with valid username and invalid password</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
-<td>
-<a href="#" class="linked" test-id='20' id='21'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='12'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -397,19 +438,9 @@
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='20' id='22'>happy path user login</a>
-<div class="">
-<span class="badge badge-default">Login positive and negative.happy path user login</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:46 AM</td>
-<td>
-<a href="#" class="linked" test-id='20' id='28'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='13'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -422,15 +453,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>3</span>
+<span class='badge log pass-bg'>2</span>
 </span>
 <p class="name">@sprint5</p>
-<p class="duration text-sm">3 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>@sprint5</h4>
-<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -443,9 +474,9 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='20' id='21'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='12'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -453,19 +484,9 @@
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='20' id='22'>happy path user login</a>
-<div class="">
-<span class="badge badge-default">Login positive and negative.happy path user login</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:46 AM</td>
-<td>
-<a href="#" class="linked" test-id='20' id='28'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='13'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -478,15 +499,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>6</span>
+<span class='badge log pass-bg'>2</span>
 </span>
 <p class="name">@login</p>
-<p class="duration text-sm">6 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>@login</h4>
-<span status="pass" class='badge log pass-bg'>6 passed</span>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -499,39 +520,9 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:27 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>valid admin login</a>
-<div class="">
-<span class="badge badge-default">Login.valid admin login</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:33 AM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='8'>valid ess login</a>
-<div class="">
-<span class="badge badge-default">Login.valid ess login</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:37 AM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='14'>login with valid username and invalid password</a>
-<div class="">
-<span class="badge badge-default">Login.login with valid username and invalid password</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
-<td>
-<a href="#" class="linked" test-id='20' id='21'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='12'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -539,9 +530,45 @@
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:41 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='20' id='22'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='13'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">@smoke</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@smoke</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>20:40:08 PM</td>
+<td>
+<a href="#" class="linked" test-id='11' id='12'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -549,9 +576,9 @@
 </tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>10:24:46 AM</td>
+<td>20:40:08 PM</td>
 <td>
-<a href="#" class="linked" test-id='20' id='28'>happy path user login</a>
+<a href="#" class="linked" test-id='11' id='13'>happy path user login</a>
 <div class="">
 <span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
@@ -574,25 +601,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Mar 30, 2022 10:24:27 AM</h3>
+<h3>Mar 30, 2022 08:39:57 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Mar 30, 2022 10:24:50 AM</h3>
+<h3>Mar 30, 2022 08:40:13 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>2</h3>
+<h3>1</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -608,12 +635,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>2</b> features passed
+<div><small data-tooltip='50%'>
+<b>1</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='50%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -631,9 +658,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>5</b> scenarios passed</small></div>
+<div><small data-tooltip='50%'><b>1</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='50%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -651,9 +678,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>15</b> steps passed</small></div>
+<div><small data-tooltip='90%'><b>9</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
+<small data-tooltip='10%'><b>1</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -670,7 +697,7 @@
 </div></div>
 <script>
 var timeline = {
-"Login":14.388,"Login positive and negative":9.146
+"Add employees using Scenario Outline":10.039,"Login positive and negative":5.397
 };
 </script>
 <div class="row">
@@ -681,23 +708,23 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@regression</td>
-<td>1</td>
+<td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
+<td>0%</td>
 </tr>
 <tr>
-<td>@smoke</td>
-<td>6</td>
+<td>@testingNow</td>
+<td>2</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
+<td>50%</td>
 </tr>
 <tr>
 <td>@sprint5</td>
-<td>3</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -705,7 +732,15 @@ var timeline = {
 </tr>
 <tr>
 <td>@login</td>
-<td>6</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@smoke</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -720,19 +755,19 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 2,
-failParent: 0,
+passParent: 1,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 5,
-failChild: 0,
+passChild: 1,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 15,
-failGrandChild: 0,
+passGrandChild: 9,
+failGrandChild: 1,
 warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,

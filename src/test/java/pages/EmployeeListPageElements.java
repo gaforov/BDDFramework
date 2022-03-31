@@ -26,10 +26,14 @@ public class EmployeeListPageElements {
     @FindBy(linkText = "Next")
     public WebElement nextArrowButton;
 
+    @FindBy(linkText = "Last")
+    public WebElement lastArrowButton;
+
 
     public EmployeeListPageElements() {
         PageFactory.initElements(BaseClass.driver, this);
     }
+
 
     public void searchEmployeeById(String empId) {
         sendText(employeeSearchFieldById, empId);

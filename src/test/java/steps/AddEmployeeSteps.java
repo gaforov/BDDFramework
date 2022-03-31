@@ -35,8 +35,9 @@ public class AddEmployeeSteps {
     public void employee_is_added_successfully(String expectedName) {
         String actualName = personalDetailsPage.empFullName.getText();
         Assert.assertEquals("Employee name doesn't match", expectedName, actualName);
-        takeScreenshot(personalDetailsPage.empDetailsPageSection, "NewEmployeeAdded");
-        System.out.println(expectedName + " was added successfully");
+
+//        takeScreenshot(personalDetailsPage.empDetailsPageSection, "NewEmployeeAdded");
+//        System.out.println(expectedName + " was added successfully");
     }
 
     @And("user deletes employee id")
@@ -82,12 +83,11 @@ public class AddEmployeeSteps {
             String actualFullName = personalDetailsPage.empFullName.getText();
             Assert.assertEquals("Added employee name doesn't match", expectedFullName, actualFullName);
 
-            System.out.println(expectedFullName + " is added successfully");
-            takeScreenshot(personalDetailsPage.empDetailsPageSection, "PASS/" + actualFullName);
+//            takeScreenshot(personalDetailsPage.empDetailsPageSection, "PASS/" + actualFullName);
+//            System.out.println(expectedFullName + " is added successfully");
 
             // get back to AddEmployeePge to add next employee
             pimPage.addEmployeeSubMenu.click();
-
 
         }
     }
