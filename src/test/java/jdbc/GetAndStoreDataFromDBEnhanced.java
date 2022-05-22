@@ -19,20 +19,19 @@ public class GetAndStoreDataFromDBEnhanced {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("""
                 SELECT
-                	employee_id,
                     emp_firstname,
                     emp_lastname,
-                    emp_birthday
+                    emp_birthday,
+                    employee_id
                 FROM hs_hr_employees
                 WHERE emp_birthday IS NOT NULL
                 """);
         ResultSetMetaData metaData = resultSet.getMetaData();
 
         List<Map<String, String>> mapList = new ArrayList<>();
-        Map<String, String> map;
 
         while (resultSet.next()) {
-            map = new LinkedHashMap<>();
+            Map<String, String> map = new LinkedHashMap<>();
             for (int i = 1; i <= metaData.getColumnCount(); i++) {
                 map.put(metaData.getColumnName(i), resultSet.getString(i));
             }
