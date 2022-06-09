@@ -31,7 +31,7 @@ public class HardcodedExamplesImproved {
      */
 
     static String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ1MzU4NDgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY1NDU3OTA0OCwidXNlcklkIjoiMzcxNCJ9.kLY5Sq3LTGGF3p8xqb8NHnf_Ut4CPc_CU38U9iK4iSg";
+    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ1ODkwMjgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY1NDYzMjIyOCwidXNlcklkIjoiMzcxNCJ9.684-imGPWjPLcT--IO4iqsev2c6jS_lDh1zg6FsnMBo";
     static String employeeID;
 
     @Test
@@ -171,6 +171,7 @@ public class HardcodedExamplesImproved {
                           "emp_job_title": "Bodyguard"
                         }
                         """);
+//                .body(HardcodedConstants.updateCreatedEmpBody()); // instead of above code, we're passing/calling the body from another class.
 
         Response updateCreatedEmployeeResponse = updateCreatedEmployeeRequest.when().put("/updateEmployee.php");
         updateCreatedEmployeeResponse.prettyPrint();
