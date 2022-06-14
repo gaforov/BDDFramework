@@ -27,28 +27,27 @@ public class GetAndStoreDataFromDB {
 
             mapList.add(map);
 
-            // if we want it in better pair format:
-            for (String key : map.keySet()) {
-                String val = map.get(key);
-                System.out.println(key + " = " + val);
-            }
-            System.out.println("--------------------");
+            // if we want it in better pair format: // 4th way, best way?
+//            for (String key : map.keySet()) {
+//                String val = map.get(key);
+//                System.out.println(key + " = " + val);
+//            }
+//            System.out.println("--------------------");
         }
 
-        //System.out.println(mapList);
-        //System.out.println(List.of(mapList)); // same as above code
+        System.out.println(mapList);  // 1st way, ugly format
+//        System.out.println(List.of(mapList)); // same as above code
 
         // This way we can print each row on new line:
-//        for (Map<String, String> list : mapList) {
+//        for (Map<String, String> list : mapList) { // 2nd way, better format, each employee printed in new line.
 //            System.out.println(list);
 //        }
 
-        // lambda way
+        // lambda way, 3rd way, the easier way of 2nd way version.
 //        mapList.forEach(l -> System.out.println(l));
 
-
-        // Java 8 and after can even do this in shorter way (BEST WAY)
-        mapList.forEach(System.out::println);
+        // Java 8 and after can even do this in shorter way, 3rd way
+//        mapList.forEach(System.out::println);
 
 
     }

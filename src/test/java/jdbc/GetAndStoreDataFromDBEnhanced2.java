@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetAndStoreDataFromDBEnhanced {
+public class GetAndStoreDataFromDBEnhanced2 {
     String dbUsername = "syntax_hrm";
     String dbPassword = "syntaxhrm123";
     String dbURL ="jdbc:mysql://3.237.189.167:3306/syntaxhrm_mysql";
@@ -28,32 +28,15 @@ public class GetAndStoreDataFromDBEnhanced {
                 """);
         ResultSetMetaData metaData = resultSet.getMetaData();
 
-        List<Map<String, String>> mapList = new ArrayList<>();
-
+        Map<String, String> map;
         while (resultSet.next()) {
-            Map<String, String> map = new LinkedHashMap<>();
+            map = new LinkedHashMap<>();
             for (int i = 1; i <= metaData.getColumnCount(); i++) {
                 map.put(metaData.getColumnName(i), resultSet.getString(i));
-                // or maybe I can print it right here using lambda expression forEach loop
-//                map.forEach((k,v) -> System.out.println(k + ": " + v));
-//                System.out.println("--------------");
             }
-            mapList.add(map);
-
-//            for (String key : map.keySet()) {
-//                String val = map.get(key);
-//                System.out.println(key + " : " + val);
-//            }
-//            System.out.println("---------------------");
-
-//            for (Map<String, String> stringMap : mapList) {
-//                stringMap.forEach((k,v) -> System.out.println(k + " : " + v));
-//                System.out.println("---------------------");
-//            }
-
+                map.forEach((k,v) -> System.out.println(k + ": " + v));
+                System.out.println("--------------");
         }
-
-        mapList.forEach(System.out::println);
 
     }
 }
