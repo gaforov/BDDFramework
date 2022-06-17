@@ -3,7 +3,6 @@ package jdbcPractice;
 import org.junit.Test;
 
 import java.sql.*;
-import java.util.Objects;
 
 public class _01_JDBCIntro {
     String dbUsername ="syntax_hrm";
@@ -13,7 +12,7 @@ public class _01_JDBCIntro {
 
 
     @Test
-    public void testDb() throws SQLException {
+    public void retrieveNationalityFromDB() throws SQLException {
         /* jdbc libraries to perform/run sql queries:
         1. DriverManger Class ---> Connection
         2. Connection Interface ---> Statement
@@ -38,15 +37,18 @@ public class _01_JDBCIntro {
 //                break;
         }
 
+
+    }
+
         // Exercise 1: Write another query to retrieve all job titles from the DB.
-        System.out.println("---------------");
+    @Test
+    public void retrieveJobTitlesFromDB() throws SQLException {
+        Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        Statement statement = connection.createStatement();
         ResultSet jobs = statement.executeQuery("SELECT * FROM ohrm_job_title");
         while (jobs.next()) {
             System.out.println(jobs.getString("job_title"));
         }
-
-        // Exercise 2: Retrieve all job titles and store them in Arraylist then print it on the console.
-
     }
 
 
