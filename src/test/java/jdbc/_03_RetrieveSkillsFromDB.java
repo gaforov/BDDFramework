@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.sql.*;
 
-public class RetrieveSkillsFromDB {
+public class _03_RetrieveSkillsFromDB {
     String dbUsername = "syntax_hrm";
     String dbPassword = "syntaxhrm123";
     String dbURL ="jdbc:mysql://3.237.189.167:3306/syntaxhrm_mysql";
