@@ -25,7 +25,9 @@ public class _02_JDBC {
 
         List<String> jobTitles = new ArrayList<>();
         while (query.next()) {
-            jobTitles.add(query.getString("job_title"));
+            String job_title = query.getString("job_title");
+            jobTitles.add(job_title);
+//            jobTitles.add(query.getString("job_title"));
         }
 
 //        System.out.println(jobTitles); // 1st way, direct print
