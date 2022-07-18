@@ -3,7 +3,9 @@ package base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.ConfigsUtility;
 import utils.Constants;
 
@@ -15,17 +17,33 @@ public class BaseClass {
     public static WebDriver driver;
 
     public static WebDriver setUp() {
-        ConfigsUtility.readProperties(Constants.CONFIGURATION_FILEPATH);
+        ConfigsUtility.readProperties(Constants.CONFIGURATION_FILEPATH); // <-- should be first line, reads configuration.properties file
+        String headless = ConfigsUtility.getProperty("headless");
 
         switch (ConfigsUtility.getProperty("browser").toLowerCase()) {
             case "chrome" -> {
 //                System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH); // <-- replace with WebDriverManager
+                // AS of WDM 5.x version, below line will both create & initialize driver, but we don't use it because of headless at this moment
+//                driver = WebDriverManager.chromedriver().create();
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                if (headless.equalsIgnoreCase("true")) {
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--headless"); // optional: "--window-size=1920,1200", "--no-sandbox", "disable-gpu"
+                    driver = new ChromeDriver(chromeOptions);
+                } else {
+                    driver = new ChromeDriver();
+                }
+
             }
             case "firefox" -> {
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                if (headless.equalsIgnoreCase("true")) {
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--headless");
+                    driver = new FirefoxDriver(firefoxOptions);
+                } else {
+                    driver = new FirefoxDriver();
+                }
             }
             default -> throw new RuntimeException("Browser is not supported");
         }

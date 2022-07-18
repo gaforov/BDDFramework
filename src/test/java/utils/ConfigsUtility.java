@@ -10,7 +10,6 @@ public class ConfigsUtility {
 
     /**
      * This method will read from properties file
-     *
      * @param filePath
      */
     public static void readProperties(String filePath) {
@@ -26,8 +25,7 @@ public class ConfigsUtility {
     }
 
     /**
-     * This method will retrieve data from properties file
-     *
+     * This method will retrieve/return data from properties file
      * @param key
      * @return String value
      */

@@ -22,7 +22,7 @@ Feature: Login
     Examples:
       | UserName | Password    | FirstName |
       | Admin    | Hum@nhrm123 | Admin     |
-      | Syntax   | Syntax123!  | Mike      |
+      | Syntax   | Syntax123!  | Syntax    |
 
   @smoke @regression
   Scenario: login with valid username and invalid password

@@ -1,6 +1,6 @@
 package api.steps.practice;
 
-public class HardcodedConstants {
+public class _03_EmployeePayloads {
 
     public static String updateCreatedEmpBody() {
         String updateBody = """
@@ -11,8 +11,8 @@ public class HardcodedConstants {
                           "emp_middle_name": "A.",
                           "emp_gender": "M",
                           "emp_birthday": "1990-04-13",
-                          "emp_status": "Independent contractor",
-                          "emp_job_title": "Bodyguard"
+                          "emp_status": "Independent contractor - Updated",
+                          "emp_job_title": "Bodyguard - Updated"
                         }
                 """;
         return updateBody;

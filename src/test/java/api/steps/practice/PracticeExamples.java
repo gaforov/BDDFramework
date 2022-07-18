@@ -313,7 +313,7 @@ public class PracticeExamples {
          */
 
         RequestSpecification updateCreatedEmployeeRequest = given().header("Content-Type", "application/json")
-                .header("Authorization", token).body(HardcodedConstants.updateCreatedEmpBody());    // <=== changed here with my code HardcodedConstants
+                .header("Authorization", token).body(_03_EmployeePayloads.updateCreatedEmpBody());    // <=== changed here with my code HardcodedConstants
 
         /**
          * Storing response into updateCreatedEmployeeResponse

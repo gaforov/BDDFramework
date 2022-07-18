@@ -17,12 +17,14 @@ public class Hooks {
     @After
     public void end(Scenario scenario) {
 
-        byte[] screenshot;
+        byte[] screenshot = new byte[0];
         if (scenario.isFailed()) {
             screenshot = takeScreenshotAsBytes("Failed/" + scenario.getName());
-        }else {
-            screenshot = takeScreenshotAsBytes("Passed/" + scenario.getName());
         }
+        // No need to take screenshots of passed test cases. 
+//        else {
+//            screenshot = takeScreenshotAsBytes("Passed/" + scenario.getName());
+//        }
         scenario.attach(screenshot, "image/png", scenario.getName());
 
 

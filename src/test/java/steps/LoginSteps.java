@@ -48,7 +48,7 @@ public class LoginSteps {
 
     @Then("ess user is successfully logged in")
     public void ess_user_is_successfully_logged_in() {
-        String expectedMsg = "Welcome Mike";
+        String expectedMsg = "Welcome Syntax";
         Assert.assertEquals("Welcome message is not correct", expectedMsg, dashboardPage.welcome.getText());
     }
 

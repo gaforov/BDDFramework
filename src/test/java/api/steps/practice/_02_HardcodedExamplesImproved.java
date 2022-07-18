@@ -13,15 +13,13 @@ import static org.hamcrest.Matchers.*;
 // Import this to make sure methods get executed in order
 import org.junit.runners.MethodSorters;
 
-import java.util.Arrays;
-
 // We may use below package - for now comment it out.
 //import org.apache.hc.core5.http.ContentType;
 
 // This (junit interface) annotation will execute @Test annotations in ascending order. Alphabetical order.
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class HardcodedExamplesImproved {
+public class _02_HardcodedExamplesImproved {
 
     /*
     Rest Assured:
@@ -31,7 +29,7 @@ public class HardcodedExamplesImproved {
      */
 
     static String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTQ1ODkwMjgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY1NDYzMjIyOCwidXNlcklkIjoiMzcxNCJ9.684-imGPWjPLcT--IO4iqsev2c6jS_lDh1zg6FsnMBo";
+    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTcxOTU5NTgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY1NzIzOTE1OCwidXNlcklkIjoiMzcxNCJ9.4FX-PVIz2AB7RmAA5bxEAt21Z1SUyT4PUBXm64w7iaw";
     static String employeeID;
 
     @Test
@@ -47,7 +45,7 @@ public class HardcodedExamplesImproved {
                           "emp_middle_name": "A.",
                           "emp_gender": "M",
                           "emp_birthday": "1990-03-15",
-                          "emp_status": "Independent contractor",
+                          "emp_status": "Full-Time Employee",
                           "emp_job_title": "SDET Engineer"
                         }
                         """);
@@ -64,7 +62,10 @@ public class HardcodedExamplesImproved {
 
         // Optional to print employeeID
         System.out.println("employeeID = " + employeeID);
-        createEmployeeResponse.then().assertThat().body("Message", equalTo("Employee Created")); // manually import static hamcrest.Matchers for this to fork
+
+        // Run some assertions/validations
+        createEmployeeResponse.then().assertThat().body("Message", equalTo("Employee Created")); // manually import static org.hamcrest.Matchers for "equalTo()" to fork
+       createEmployeeResponse.then().assertThat().body("Employee.emp_firstname", equalTo("John"));
         // Verifying server using then().header()
         createEmployeeResponse.then().header("Server", "Apache/2.4.39 (Win64) PHP/7.2.18");
         // Verifying Content-Type using assertThat().header()
@@ -74,15 +75,18 @@ public class HardcodedExamplesImproved {
     @Test
     public void bGETcreatedEmployee() {
         System.out.println("\n------ Method B results start here --------------------");
+
+//        System.out.println("employeeID = " + employeeID);  /// <=== WHY THIS IS NULL?? I assigned value to it when created employee and stored on global static variable.
+
         // Preparing request for '/getOneEmployee.php' endpoint.
         RequestSpecification getCreatedEmployeeRequest = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", token)
                 .queryParam("employee_id", employeeID);
         // Making call to retrieve created employee - still not working for some reason.
-        Response getCreatedEmployeeResponse = getCreatedEmployeeRequest.when().log().all().get("/getOneEmployee.php");
+        Response getCreatedEmployeeResponse = getCreatedEmployeeRequest.when().get("/getOneEmployee.php");
         String prettyPrintResponse = getCreatedEmployeeResponse.prettyPrint();
-        getCreatedEmployeeResponse.body().jsonPath().prettyPrint(); // optional printing to see why global static employeeID is not recognized, but when entire class is run then it is recognized. individually not, why?
+//        getCreatedEmployeeResponse.body().jsonPath().prettyPrint(); // optional printing to see why global static employeeID is not recognized, but when entire class is run then it is recognized. individually not, why?
 
         String empID = getCreatedEmployeeResponse.body().jsonPath().getString("employee.employee_id");
         boolean employeeIdMatch = empID.equalsIgnoreCase(employeeID); // Also, can use contentEquals(employeeID)
@@ -159,22 +163,40 @@ public class HardcodedExamplesImproved {
         RequestSpecification updateCreatedEmployeeRequest = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", token)
-                .body("""
-                        {
-                          "employee_id": "employeeID",
-                          "emp_firstname": "John",
-                          "emp_lastname": "Wick",
-                          "emp_middle_name": "A.",
-                          "emp_gender": "M",
-                          "emp_birthday": "1990-04-13",
-                          "emp_status": "Independent contractor",
-                          "emp_job_title": "Bodyguard"
-                        }
-                        """);
-//                .body(HardcodedConstants.updateCreatedEmpBody()); // instead of above code, we're passing/calling the body from another class.
+//                .body("""
+//                        {
+//                          "employee_id": ""+employeeID+"",  // <== quite have not figured how to take care of this double quote inside triple quote, for now lets not use it.
+//                          "emp_firstname": "John",
+//                          "emp_lastname": "Wick",
+//                          "emp_middle_name": "A.",
+//                          "emp_gender": "M",
+//                          "emp_birthday": "1990-04-13",
+//                          "emp_status": "Independent contractor - Updated",
+//                          "emp_job_title": "Bodyguard - Updated"
+//                        }
+//                        """);
+
+                // paste body without triple quote, old way
+                .body("{\n" +
+                        "  \"employee_id\": \""+employeeID+"\",\n" +
+                        "  \"emp_firstname\": \"John\",\n" +
+                        "  \"emp_lastname\": \"Wick\",\n" +
+                        "  \"emp_middle_name\": \"A.\",\n" +
+                        "  \"emp_gender\": \"M\",\n" +
+                        "  \"emp_birthday\": \"1990-04-13\",\n" +
+                        "  \"emp_status\": \"Independent contractor - Updated\",\n" +
+                        "  \"emp_job_title\": \"Bodyguard - Updated\"\n" +
+                        "}");
+
+//                .body(_03_EmployeePayloads.updateCreatedEmpBody()); // instead of above code, we're passing/calling the body from another class.
 
         Response updateCreatedEmployeeResponse = updateCreatedEmployeeRequest.when().put("/updateEmployee.php");
         updateCreatedEmployeeResponse.prettyPrint();
+
+        // do some validation
+//        updateCreatedEmployeeResponse.then().assertThat().body("Message", equalTo("Employee record Updated"));
+//        String empID = updateCreatedEmployeeResponse.body().jsonPath().getString("Employee.emp_firstname");
+//        Assert.assertTrue(empID.contentEquals(employeeID));
     }
 
 }
