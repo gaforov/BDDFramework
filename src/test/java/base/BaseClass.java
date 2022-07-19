@@ -34,9 +34,6 @@ public class BaseClass {
                     driver = new ChromeDriver();
                 }
 
-
-
-
             }
             case "firefox" -> {
                 WebDriverManager.firefoxdriver().setup();
