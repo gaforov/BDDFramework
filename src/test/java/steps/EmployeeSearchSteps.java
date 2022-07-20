@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,7 +24,6 @@ public class EmployeeSearchSteps {
     @Given("user enters existing employee's id {string}")
     public void user_enters_existing_employee_s_id(String empId) {
         sendText(empListPage.employeeSearchFieldById, empId);
-        ;
     }
 
     @When("user clicks on search button")
@@ -36,6 +36,7 @@ public class EmployeeSearchSteps {
         String searchResultIdText = "";
         for (WebElement empSearchResultId : empListPage.searchResultEmpIds) {
             searchResultIdText = empSearchResultId.getText();
+            // next arrow does not stop on the last page, keeps pressing, endlessly. below, replace && with || to see if it fixes this.
             while (searchResultIdText != null && !searchResultIdText.equals(empId)) {
                 click_waitForClickability(empListPage.nextArrowButton);
 
@@ -57,8 +58,10 @@ public class EmployeeSearchSteps {
                 + personalDetailsPage.empFullName.getText());
     }
 
-    @Given("user enters existing employee's {string} and {string}")
-    public void user_enters_existing_employee_s_firstname_and_lastname(String empFirstName, String empLastName) {
+    @And("user enters existing employee's {string} and {string}")
+    public void user_enters_existing_employee_s_firstname_and_lastname(String empFirstName, String empLastName) throws InterruptedException {
+        Thread.sleep(2000);
         sendText(empListPage.employeeSearchFieldByName, empFirstName + " " + empLastName);
+        Thread.sleep(2000);
     }
 }

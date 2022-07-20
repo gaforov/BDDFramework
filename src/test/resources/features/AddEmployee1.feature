@@ -12,3 +12,5 @@ Feature: Add employees using Scenario Outline
       | John      | A.         | Smith    | John A. Smith                      |
 #      | Mary      | J.         | Ann      | Mary J. Ann                        |
 #      | Michael   | R.         | Williams | Michael R. Williams                |
+
+  # Note: After adding/saving employee there is a glitch/bug on the syntaxHRM website, switch to orangeHRM or exelenterHRM to do this task.
