@@ -18,7 +18,7 @@ public class _01_JDBC {
         Statement statement = connection.createStatement();
         ResultSet query = statement.executeQuery("SELECT * FROM ohrm_nationality");
 
-        query.next(); // doesn't work without next. If we don't use while() it will print only first item.
+        query.next(); // doesn't work without next. If we don't use while() it will print only first item, then stops. (No looping).
         String name = query.getString("name");
         System.out.println(name);
 

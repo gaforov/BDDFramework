@@ -1,17 +1,18 @@
 package api.steps.practice;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import org.junit.*;
-
-// REST Assured 'static' imports
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
-
-// Import this to make sure methods get executed in order
+import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 // We may use below package - for now comment it out.
 //import org.apache.hc.core5.http.ContentType;
@@ -29,26 +30,17 @@ public class _02_HardcodedExamplesImproved {
      */
 
     static String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NTcxOTU5NTgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY1NzIzOTE1OCwidXNlcklkIjoiMzcxNCJ9.4FX-PVIz2AB7RmAA5bxEAt21Z1SUyT4PUBXm64w7iaw";
+    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjE2NjczMDAsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY2MTcxMDUwMCwidXNlcklkIjoiMzcxNCJ9.P8_EWzfb1oNEosmWc160qq3ui6bfUC2ZUGNxUQwkgcE";
     static String employeeID;
 
     @Test
     public void aPOSTcreateEmployee() {
-        System.out.println("\n------ Method A results start here --------------------");
+        System.out.println("\n------ Method A : Create an employee --------------------");
         RequestSpecification createEmployeeRequest = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", token)
-                .body("""
-                        {
-                          "emp_firstname": "John",
-                          "emp_lastname": "Wick",
-                          "emp_middle_name": "A.",
-                          "emp_gender": "M",
-                          "emp_birthday": "1990-03-15",
-                          "emp_status": "Full-Time Employee",
-                          "emp_job_title": "SDET Engineer"
-                        }
-                        """);
+                .body(_03_EmployeePayloads.createEmployee());
+
         Response createEmployeeResponse = createEmployeeRequest.when().post("/createEmployee.php");
         createEmployeeResponse.prettyPrint();
 
@@ -65,7 +57,7 @@ public class _02_HardcodedExamplesImproved {
 
         // Run some assertions/validations
         createEmployeeResponse.then().assertThat().body("Message", equalTo("Employee Created")); // manually import static org.hamcrest.Matchers for "equalTo()" to fork
-       createEmployeeResponse.then().assertThat().body("Employee.emp_firstname", equalTo("John"));
+        createEmployeeResponse.then().assertThat().body("Employee.emp_firstname", equalTo("John"));
         // Verifying server using then().header()
         createEmployeeResponse.then().header("Server", "Apache/2.4.39 (Win64) PHP/7.2.18");
         // Verifying Content-Type using assertThat().header()
@@ -74,7 +66,7 @@ public class _02_HardcodedExamplesImproved {
 
     @Test
     public void bGETcreatedEmployee() {
-        System.out.println("\n------ Method B results start here --------------------");
+        System.out.println("\n------ Method B : Get created employee --------------------");
 
 //        System.out.println("employeeID = " + employeeID);  /// <=== WHY THIS IS NULL?? I assigned value to it when created employee and stored on global static variable.
 
@@ -100,13 +92,14 @@ public class _02_HardcodedExamplesImproved {
 
         // Using JsonPath to retrieve values from the response as a String. This also could've been done using body.jsonPath() like in line 82 above.
         JsonPath js = new JsonPath(prettyPrintResponse);
-        String emploID = js.getString("employee.employee_id");
+        String emploID = js.getString("employee.employee_id");  // same as line 82, just different way
         String firstName = js.getString("employee.emp_firstname");
         String middleName = js.getString("employee.emp_middle_name");
         String lastName = js.getString("employee.emp_lastname");
         String birthday = js.getString("employee.emp_birthday");
 
-        System.out.println("emploID = " + emploID);   // print some of them to make sure they're being retrieved.
+        // print some of them to make sure they're being retrieved.
+        System.out.println("emploID = " + emploID);
         System.out.println("firstName = " + firstName);
         System.out.println("birthday = " + birthday);
 
@@ -117,7 +110,7 @@ public class _02_HardcodedExamplesImproved {
 
     @Test
     public void cGETallEmployees() {
-        System.out.println("\n------ Method C results start here --------------------");
+        System.out.println("\n------ Method C : Getting All employees and verifying newly-created employee is present --------------------");
         RequestSpecification getAllEmployeesRequest = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", token);
@@ -155,7 +148,7 @@ public class _02_HardcodedExamplesImproved {
 
     @Test
     public void dPUTupdateCreatedEmployee() {
-        System.out.println("\n------ Method D results start here --------------------");
+        System.out.println("\n------ Method D : Updating employee --------------------");
 
         /*
         Replace this --> {{employeeID}} <-- with this --> " + employeeID + " <--  if using three quotes then just this: "employeeID"
@@ -163,40 +156,77 @@ public class _02_HardcodedExamplesImproved {
         RequestSpecification updateCreatedEmployeeRequest = given()
                 .header("Content-Type", "application/json")
                 .header("Authorization", token)
-//                .body("""
-//                        {
-//                          "employee_id": ""+employeeID+"",  // <== quite have not figured how to take care of this double quote inside triple quote, for now lets not use it.
-//                          "emp_firstname": "John",
-//                          "emp_lastname": "Wick",
-//                          "emp_middle_name": "A.",
-//                          "emp_gender": "M",
-//                          "emp_birthday": "1990-04-13",
-//                          "emp_status": "Independent contractor - Updated",
-//                          "emp_job_title": "Bodyguard - Updated"
-//                        }
-//                        """);
+//                .body("{\n" +
+//                        "  \"employee_id\": \""+employeeID+"\",\n" +
+//                        "  \"emp_firstname\": \"John\",\n" +
+//                        "  \"emp_lastname\": \"Wick\",\n" +
+//                        "  \"emp_middle_name\": \"A.\",\n" +
+//                        "  \"emp_gender\": \"M\",\n" +
+//                        "  \"emp_birthday\": \"1990-04-13\",\n" +
+//                        "  \"emp_status\": \"Independent contractor - Updated\",\n" +
+//                        "  \"emp_job_title\": \"Bodyguard - Updated\"\n" +
+//                        "}");
 
-                // paste body without triple quote, old way
-                .body("{\n" +
-                        "  \"employee_id\": \""+employeeID+"\",\n" +
-                        "  \"emp_firstname\": \"John\",\n" +
-                        "  \"emp_lastname\": \"Wick\",\n" +
-                        "  \"emp_middle_name\": \"A.\",\n" +
-                        "  \"emp_gender\": \"M\",\n" +
-                        "  \"emp_birthday\": \"1990-04-13\",\n" +
-                        "  \"emp_status\": \"Independent contractor - Updated\",\n" +
-                        "  \"emp_job_title\": \"Bodyguard - Updated\"\n" +
-                        "}");
+                //this is the same as above body code, just body is imported from another class where payloads are stored.
+                .body(_03_EmployeePayloads.updateCreatedEmpBody());
 
-//                .body(_03_EmployeePayloads.updateCreatedEmpBody()); // instead of above code, we're passing/calling the body from another class.
-
+        // Print response
         Response updateCreatedEmployeeResponse = updateCreatedEmployeeRequest.when().put("/updateEmployee.php");
-        updateCreatedEmployeeResponse.prettyPrint();
+        String prettyPrint = updateCreatedEmployeeResponse.prettyPrint();
 
         // do some validation
-//        updateCreatedEmployeeResponse.then().assertThat().body("Message", equalTo("Employee record Updated"));
-//        String empID = updateCreatedEmployeeResponse.body().jsonPath().getString("Employee.emp_firstname");
+        updateCreatedEmployeeResponse.then().assertThat().body("Message", equalTo("Employee record Updated"));
+        updateCreatedEmployeeResponse.then().assertThat().body("Employee.emp_status", equalTo("Updated: Independent contractor"));
+//        String empID = updateCreatedEmployeeResponse.body().jsonPath().getString("Employee.emp_firstname"); //Note: For some reason, cannot assert this line.
+//        System.out.println(empID);
 //        Assert.assertTrue(empID.contentEquals(employeeID));
+    }
+
+    @Test
+    public void eGETUpdatedEmployee() {
+        System.out.println("\n------ Method E : Get Updated employee --------------------");
+
+        RequestSpecification request = given()
+//                .header("Content-Type", "application/json")
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .queryParam("employee_id", employeeID);
+        Response response = request.when().get("/getOneEmployee.php");
+        response.prettyPrint();
+        response.then().assertThat().body("employee.emp_job_title", equalTo("Updated: Bodyguard"));
+        response.then().assertThat().body("employee.employee_id", equalTo(employeeID));
+    }
+
+    @Test
+    public void fPATCHPartialUpdateEmployee() {
+        System.out.println("\n------ Method F : Partially update employee --------------------");
+
+        RequestSpecification request = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .body("{\n" +
+                        "  \"employee_id\": \" "+employeeID+" \",\n" +
+                        "  \"emp_job_title\": \"Partially Updated: Bodyguard\"\n" +
+                        "}");
+
+        Response response = request.when().patch("/updatePartialEmplyeesDetails.php");
+
+        response.prettyPrint();
+
+    }
+
+    @Test
+    public void gDeleteEmployee() {
+        System.out.println("\n------ Method G : Delete employee --------------------");
+
+        RequestSpecification request = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", token)
+                .queryParam("employee_id", employeeID);
+        Response response = request.when()
+                .delete("/deleteEmployee.php");
+        response.prettyPrint();
+        response.then().assertThat().body("message", equalTo("Employee deleted"));
     }
 
 }
