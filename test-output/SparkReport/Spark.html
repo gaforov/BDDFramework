@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jul 28, 2022 08:01:32 PM</span></a>
+<a href="#"><span class="badge badge-primary">Mar 12, 2023 10:41:03 AM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -71,7 +76,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -79,79 +84,404 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@workflow</a>
+<a class="dropdown-item" href="#">@smoke</a><a class="dropdown-item" href="#">@regression</a><a class="dropdown-item" href="#">@login</a><a class="dropdown-item" href="#">@sprint5</a><a class="dropdown-item" href="#">@testingNow</a>
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">HRM API End to End Workflow</p>
+            <p class="name">Add employees using Scenario Outline</p>
             <p class="text-sm">
-              <span>8:01:32 PM</span> / <span>00:00:00:013</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>10:41:03 AM</span> / <span>00:00:59:487</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">HRM API End to End Workflow</h5>
-<span class='badge badge-success'>07.28.2022 8:01:32 PM</span>
-<span class='badge badge-danger'>07.28.2022 8:01:32 PM</span>
-<span class='badge badge-default'>00:00:00:013</span>
+<h5 class="test-status text-fail">Add employees using Scenario Outline</h5>
+<span class='badge badge-success'>03.12.2023 10:41:03 AM</span>
+<span class='badge badge-danger'>03.12.2023 10:42:02 AM</span>
+<span class='badge badge-default'>00:00:59:487</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
 </div>
-<div class="m-t-10 m-l-5"> Description: This feature tests and verifies HRM Web Services
-The workflow consists of the following sequential calls</div>
+<div class="m-t-10 m-l-5"></div>
 </div>
 </div>
 <div class="accordion mt-4">
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>Create an employee</div>
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
       </div>
     </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.a_jwt_is_generated()">
-                <span>Given a JWT is generated</span>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="3"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step fail-bg">
+                    <span>Given user is logged with valid admin credentials</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: Unable to locate element: #txtUsername
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'Shahnozas-MacBook-Air.local', ip: '2601:280:c681:e840:d8ba:9934:fd97:a4e1%en0', os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.2.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [3ac3c8c1-062e-41c1-bfd7-01af81916282, findElement {using=id, value=txtUsername}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 109.0.1, moz:accessibilityChecks: false, moz:buildID: 20230127170202, moz:debuggerAddress: 127.0.0.1:62252, moz:geckodriverVersion: 0.32.0, moz:headless: false, moz:platformVersion: 22.3.0, moz:processID: 89227, moz:profile: /var/folders/2d/b3mbjfrj7yq..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://127.0.0.1:62252/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3ac3c8c1-062e-41c1-bfd7-01af81916282
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy26.clear(Unknown Source)
+	at utils.CommonMethods.sendText(CommonMethods.java:29)
+	at pages.LoginPageElements.loginAndClick(LoginPageElements.java:48)
+	at steps.LoginSteps.user_is_logged_with_valid_admin_credentials(LoginSteps.java:19)
+	at ✽.user is logged with valid admin credentials(file:///Users/shahnoza/IdeaProjects/BDDFramework/src/test/resources/features/AddEmployee1.feature:5)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user navigates to AddEmployeePage</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user enters new employee's "John", "A.", and "Smith"</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user clicks on save button</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then "John A. Smith" is added successfully</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>Adding multiple employees
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
+                  </div>
               </div>
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.a_request_is_prepared_to_create_an_employee()">
-                <span>Given a request is prepared to create an employee</span>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="11"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step fail-bg">
+                    <span>Given user is logged with valid admin credentials</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: Unable to locate element: #txtUsername
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'Shahnozas-MacBook-Air.local', ip: '2601:280:c681:e840:d8ba:9934:fd97:a4e1%en0', os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.2.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [1d20890b-b394-4af3-84c1-a7b368a9fa9e, findElement {using=id, value=txtUsername}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 109.0.1, moz:accessibilityChecks: false, moz:buildID: 20230127170202, moz:debuggerAddress: 127.0.0.1:56556, moz:geckodriverVersion: 0.32.0, moz:headless: false, moz:platformVersion: 22.3.0, moz:processID: 89255, moz:profile: /var/folders/2d/b3mbjfrj7yq..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://127.0.0.1:56556/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 1d20890b-b394-4af3-84c1-a7b368a9fa9e
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy26.clear(Unknown Source)
+	at utils.CommonMethods.sendText(CommonMethods.java:29)
+	at pages.LoginPageElements.loginAndClick(LoginPageElements.java:48)
+	at steps.LoginSteps.user_is_logged_with_valid_admin_credentials(LoginSteps.java:19)
+	at ✽.user is logged with valid admin credentials(file:///Users/shahnoza/IdeaProjects/BDDFramework/src/test/resources/features/AddEmployee1.feature:5)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user navigates to AddEmployeePage</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user enters new employee's "Mary", "J.", and "Ann"</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user clicks on save button</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then "Mary J. Ann" is added successfully</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>Adding multiple employees
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded2.png' src="test-output/embedded2.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
+                  </div>
               </div>
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.a_post_call_is_made_to_create_an_employee()">
-                <span>When a POST call is made to create an employee</span>
+            </div>
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="19"><span class="badge log fail-bg mr-2">Fail</span>Adding multiple employees</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step fail-bg">
+                    <span>Given user is logged with valid admin credentials</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: Unable to locate element: #txtUsername
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'Shahnozas-MacBook-Air.local', ip: '2601:280:c681:e840:d8ba:9934:fd97:a4e1%en0', os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.2.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [e123dc90-9aa5-4382-a76e-5a78eaa7bc7a, findElement {using=id, value=txtUsername}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 109.0.1, moz:accessibilityChecks: false, moz:buildID: 20230127170202, moz:debuggerAddress: 127.0.0.1:54160, moz:geckodriverVersion: 0.32.0, moz:headless: false, moz:platformVersion: 22.3.0, moz:processID: 89288, moz:profile: /var/folders/2d/b3mbjfrj7yq..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://127.0.0.1:54160/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: e123dc90-9aa5-4382-a76e-5a78eaa7bc7a
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy26.clear(Unknown Source)
+	at utils.CommonMethods.sendText(CommonMethods.java:29)
+	at pages.LoginPageElements.loginAndClick(LoginPageElements.java:48)
+	at steps.LoginSteps.user_is_logged_with_valid_admin_credentials(LoginSteps.java:19)
+	at ✽.user is logged with valid admin credentials(file:///Users/shahnoza/IdeaProjects/BDDFramework/src/test/resources/features/AddEmployee1.feature:5)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user navigates to AddEmployeePage</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user enters new employee's "Michael", "R.", and "Williams"</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user clicks on save button</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then "Michael R. Williams" is added successfully</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>Adding multiple employees
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded3.png' src="test-output/embedded3.png">
+    
+    </div></div>
+</div>
       <div>
       </div>
+                  </div>
               </div>
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.status_code_for_creating_an_employee_is(java.lang.Integer)">
-                <span>Then status code for creating an employee is 201</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.employee_is_created()">
-                <span>And employee is created</span>
-      <div>
-      </div>
-              </div>
-              <div class="step pass-bg" title="api.steps.practice.WorkflowAllSteps.employee_id_is_stored_as_a_global_variable_to_be_used_for_other_calls()">
-                <span>And employee ID is stored as a global variable to be used for other calls.</span>
-      <div>
-      </div>
-              </div>
+            </div>
+        </div>
+  </div>
+</div>
           </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="27"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Login positive and negative</p>
+            <p class="text-sm">
+              <span>10:42:02 AM</span> / <span>00:00:18:708</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Login positive and negative</h5>
+<span class='badge badge-success'>03.12.2023 10:42:02 AM</span>
+<span class='badge badge-danger'>03.12.2023 10:42:21 AM</span>
+<span class='badge badge-default'>00:00:18:708</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=27</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="28"><span class="badge log fail-bg mr-2">Fail</span>happy path user login</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="29"><span class="badge log fail-bg mr-2">Fail</span>happy path user login</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step fail-bg">
+                    <span>When user enters valid "Admin" and "Hum@nhrm123"</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: Unable to locate element: #txtUsername
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'Shahnozas-MacBook-Air.local', ip: '2601:280:c681:e840:d8ba:9934:fd97:a4e1%en0', os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.2.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [b31d094c-f790-49dc-84bd-df6d5a52d9aa, findElement {using=id, value=txtUsername}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 109.0.1, moz:accessibilityChecks: false, moz:buildID: 20230127170202, moz:debuggerAddress: 127.0.0.1:62904, moz:geckodriverVersion: 0.32.0, moz:headless: false, moz:platformVersion: 22.3.0, moz:processID: 89316, moz:profile: /var/folders/2d/b3mbjfrj7yq..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), se:cdp: ws://127.0.0.1:62904/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: b31d094c-f790-49dc-84bd-df6d5a52d9aa
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:379)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
+	at jdk.proxy2/jdk.proxy2.$Proxy26.clear(Unknown Source)
+	at utils.CommonMethods.sendText(CommonMethods.java:29)
+	at steps.LoginSteps.userEntersValidAnd(LoginSteps.java:72)
+	at ✽.user enters valid "Admin" and "Hum@nhrm123"(file:///Users/shahnoza/IdeaProjects/BDDFramework/src/test/resources/features/Login2.feature:6)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And user clicks on login button</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>Then "Admin" is successfully logged in</span>
+      <div>Step skipped
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>steps.Hooks.end(io.cucumber.java.Scenario)</span>
+      <div>happy path user login
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded4.png' src="test-output/embedded4.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
         </div>
   </div>
 </div>
@@ -166,10 +496,10 @@ The workflow consists of the following sequential calls</div>
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view exception-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
 <ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
@@ -177,15 +507,15 @@ The workflow consists of the following sequential calls</div>
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>1</span>
+<span class='badge log badge-danger'>4</span>
 </span>
-<p class="name">@workflow</p>
-<p class="duration text-sm">1 tests</p>
+<p class="name">org.openqa.selenium.NoSuchElementException</p>
+<p class="duration text-sm">4 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>@workflow</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
+<h4>org.openqa.selenium.NoSuchElementException</h4>
+<span status="fail" class='badge log badge-danger'>4 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -196,13 +526,349 @@ The workflow consists of the following sequential calls</div>
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>20:01:32 PM</td>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:11 AM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>Create an employee</a>
+<a href="#" class="linked" test-id='1' id='5'>Given user is logged with valid admin credentials</a>
 <div class="">
-<span class="badge badge-default">HRM API End to End Workflow.Create an employee</span>
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees.Given user is logged with valid admin credentials</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:32 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='13'>Given user is logged with valid admin credentials</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees.Given user is logged with valid admin credentials</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:51 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='21'>Given user is logged with valid admin credentials</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees.Given user is logged with valid admin credentials</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:09 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='31'>When user enters valid "Admin" and "Hum@nhrm123"</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login.When user enters valid "Admin" and "Hum@nhrm123"</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">5</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@smoke</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@smoke</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='28'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='29'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>4</span>
+</span>
+<p class="name">@regression</p>
+<p class="duration text-sm">4 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@regression</h4>
+<span status="fail" class='badge log badge-danger'>4 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:03 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:03 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:23 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='11'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:43 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='19'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@login</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@login</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='28'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='29'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">@sprint5</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@sprint5</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='28'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='29'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>6</span>
+</span>
+<p class="name">@testingNow</p>
+<p class="duration text-sm">6 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@testingNow</h4>
+<span status="fail" class='badge log badge-danger'>6 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:03 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='2'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:03 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:23 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='11'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:41:43 AM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='19'>Adding multiple employees</a>
+<div class="">
+<span class="badge badge-default">Add employees using Scenario Outline.Adding multiple employees</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='28'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>10:42:02 AM</td>
+<td>
+<a href="#" class="linked" test-id='27' id='29'>happy path user login</a>
+<div class="">
+<span class="badge badge-default">Login positive and negative.happy path user login</span>
 </div>
 </td>
 </tr>
@@ -223,25 +889,25 @@ The workflow consists of the following sequential calls</div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jul 28, 2022 08:01:32 PM</h3>
+<h3>Mar 12, 2023 10:41:03 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jul 28, 2022 08:01:32 PM</h3>
+<h3>Mar 12, 2023 10:42:21 AM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>2</h3>
 </div></div>
 </div>
 </div>
@@ -257,12 +923,12 @@ The workflow consists of the following sequential calls</div>
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>2</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -280,9 +946,9 @@ The workflow consists of the following sequential calls</div>
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='0%'><b>0</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='100%'><b>4</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -300,10 +966,10 @@ The workflow consists of the following sequential calls</div>
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>6</b> steps passed</small></div>
+<div><small data-tooltip='18%'><b>4</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='18%'><b>4</b> steps failed,
+<b>14</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -319,7 +985,7 @@ The workflow consists of the following sequential calls</div>
 </div></div>
 <script>
 var timeline = {
-"HRM API End to End Workflow":0.013
+"Add employees using Scenario Outline":59.487,"Login positive and negative":18.708
 };
 </script>
 <div class="row">
@@ -329,12 +995,44 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@workflow</td>
-<td>1</td>
+<td>@smoke</td>
+<td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@regression</td>
 <td>0</td>
-<td>100%</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@login</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@sprint5</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>@testingNow</td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0%</td>
 </tr>
 </tbody>
 </table></div>
@@ -345,21 +1043,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 2,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 0,
+passChild: 0,
+failChild: 4,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 6,
-failGrandChild: 0,
+passGrandChild: 4,
+failGrandChild: 4,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 14,
 infoGrandChild: 0,
 eventsCount: 5,
 };

@@ -1,10 +1,20 @@
 package api.steps.practice;
 
+import api.utils._03_EmployeePayloads;
 import io.cucumber.java.en.*;
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
+
+import static io.restassured.RestAssured.given;
 
 public class WorkflowAllSteps {
+    String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
+    RequestSpecification request;
     @Given("a request is prepared to create an employee")
     public void a_request_is_prepared_to_create_an_employee() {
+        request = given().header("Content-Type", "application/json")
+                .header("Authorization", TokenGenerationSteps.token)
+                .body(_03_EmployeePayloads.createEmployee());
     }
     @When("a POST call is made to create an employee")
     public void a_post_call_is_made_to_create_an_employee() {

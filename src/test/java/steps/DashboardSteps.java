@@ -34,6 +34,12 @@ public class DashboardSteps {
         System.out.println(expectedAdminMenu.toString());
         System.out.println(actualAdminMenu);
         Assert.assertEquals("Admin menu doesn't match", expectedAdminMenu, actualAdminMenu);
+        /**
+         * As of Cucumber 7.0 and later asList(), asLists(), and asMaps() have changed:
+         * Replace DataTable.asList() with -> DataTable.values()
+         * Replace DataTable.asLists() with -> DataTable.cells()
+         * Replace DataTable.asMaps() with -> DataTable.entries()
+         */
     }
 
     @Then("user should see dashboard menu displayed2")

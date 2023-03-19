@@ -1,5 +1,6 @@
 package api.steps.practice;
 
+import api.utils._03_EmployeePayloads;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -30,8 +31,8 @@ public class _02_HardcodedExamplesImproved {
      */
 
     static String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjE2NjczMDAsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY2MTcxMDUwMCwidXNlcklkIjoiMzcxNCJ9.P8_EWzfb1oNEosmWc160qq3ui6bfUC2ZUGNxUQwkgcE";
-    static String employeeID;
+    static String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NjI3MzA1NzMsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY2Mjc3Mzc3MywidXNlcklkIjoiMzcxNCJ9.SIMn-NvXX8apqpJIpPYdxh_9RQajGkKFX4AR21duX6U";
+    public static String employeeID;
 
     @Test
     public void aPOSTcreateEmployee() {
@@ -212,6 +213,8 @@ public class _02_HardcodedExamplesImproved {
         Response response = request.when().patch("/updatePartialEmplyeesDetails.php");
 
         response.prettyPrint();
+        response.then().assertThat().statusCode(200);  // Most likely API implementation error for not showing partial update?, because status code seems to be working.
+//        response.then().assertThat().body("Message", equalTo("Employee record updated successfully"));
 
     }
 

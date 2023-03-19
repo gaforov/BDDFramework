@@ -10,39 +10,39 @@ import static utils.CommonMethods.*;
 public class Listener extends RunListener {
 
     @Override
-    public void testRunStarted(Description description) throws Exception {
+    public void testRunStarted(Description description) {
         Date date = new Date();
         System.out.println("Test started on: " + date);
         System.out.println("Test cases to execute: " + description.testCount());
     }
 
     @Override
-    public void testRunFinished(Result result) throws Exception {
+    public void testRunFinished(Result result) {
         System.out.println("Test cases executed: " + result.getRunCount());
     }
 
     @Override
-    public void testSuiteStarted(Description description) throws Exception {
+    public void testSuiteStarted(Description description) {
         System.out.println("testSuiteStarted: " + description.getDisplayName());
     }
 
     @Override
-    public void testSuiteFinished(Description description) throws Exception {
+    public void testSuiteFinished(Description description) {
         System.out.println("testSuiteFinished: End of Tests! Total Test Cases: " + description.testCount());
     }
 
     @Override
-    public void testStarted(Description description) throws Exception {
+    public void testStarted(Description description) {
         System.out.println("Execution Started: " + description.getMethodName());
     }
 
     @Override
-    public void testFinished(Description description) throws Exception {
+    public void testFinished(Description description) {
         System.out.println("Execution Finished: " + description.getMethodName());
     }
 
     @Override
-    public void testFailure(Failure failure) throws Exception {
+    public void testFailure(Failure failure) {
         System.out.println("Execution Failed: " + failure.getException());
         takeScreenshot("FAIL/" + failure.getTestHeader());
     }
@@ -53,7 +53,7 @@ public class Listener extends RunListener {
     }
 
     @Override
-    public void testIgnored(Description description) throws Exception {
+    public void testIgnored(Description description) {
         System.out.println("Execution Ignored: " + description.getMethodName());
     }
 }

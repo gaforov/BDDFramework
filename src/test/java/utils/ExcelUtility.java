@@ -86,15 +86,13 @@ public class ExcelUtility {
 
 
     //Above code slightly differently, without loadSheet() method. Method with single-parameter --> sheetName as parameter only.
-    private static String filePath = Constants.TESTDATA_FILEPATH;
+    private static final String filePath = Constants.TESTDATA_FILEPATH;
 
     static void openExcel2(String sheetName) {
         try {
             FileInputStream fis = new FileInputStream(filePath);
             workbook = new XSSFWorkbook(fis);
             sheet = workbook.getSheet(sheetName);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -136,7 +134,6 @@ public class ExcelUtility {
 
         List<Map<String,String>> mapsList = new ArrayList<>();
         Map<String, String> excelMap;
-
 
         for (int i = 1; i < rowCount(); i++) {
             excelMap = new LinkedHashMap<>(); // LHM preserves insertion order
